@@ -12,7 +12,7 @@ class SplashScreen extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ splashVisible: false });
-    }, 3000); // Change this value to control how long the splash screen is displayed (in milliseconds)
+    }, 10000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
 
   render() {
