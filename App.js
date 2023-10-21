@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 
 class SplashScreen extends Component {
   constructor(props) {
@@ -16,38 +15,34 @@ class SplashScreen extends Component {
     }, 3000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
 
-  navigateToOtherScreen = () => {
-    const navigation = useNavigation(); // Use useNavigation to get the navigation prop
-    navigation.navigate('OtherScreen'); // Navigate to OtherScreen
-  };
-
   render() {
-    if (this.state.splashVisible) {
-      return (
-        <View style={styles.container}>
-          <Image
-            source={require("../stepup/assets/stepergize.png")} // Replace with your logo image path
-            style={styles.logo}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.setState({ splashVisible: false })}
-          >
-            <Text style={styles.buttonText}>Start</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    } else {
-      return (
-        // Your main app content goes here
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Get Started!</Text>
-          {/* <TouchableOpacity style={styles.button} onPress={this.navigateToOtherScreen}>
-            <Text style={styles.buttonText}>Go to Other Screen</Text>
-          </TouchableOpacity> */}
-        </View>
-      );
-    }
+    return (
+      <View style={styles.container}>
+        {this.state.splashVisible ? (
+          <View>
+            <Image
+              source={require("../stepup/assets/stepergize.png")}
+              style={styles.logo}
+            />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.setState({ splashVisible: false })}
+            >
+              <Text style={styles.buttonText}>Start</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View style={styles.textContainer}>
+            <Text style={styles.topText}>Top Text</Text>
+            <View style={styles.horizontalTextContainer}>
+              <Text style={styles.leftText}>Left Text</Text>
+              <Image source={require('../stepup/assets/shoes.jpeg')} style={styles.centerImage} />
+              <Text style={styles.rightText}>Right Text</Text>
+            </View>
+          </View>
+        )}
+      </View>
+    );
   }
 }
 
@@ -72,6 +67,31 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  textContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  topText: {
+    fontSize: 24,
+  },
+  horizontalTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  leftText: {
+    flex: 1,
+    textAlign: 'left',
+    fontSize: 18,
+  },
+  centerImage: {
+    width: 200,
+    height: 200,
+  },
+  rightText: {
+    flex: 1,
+    textAlign: 'right',
+    fontSize: 18,
   },
 });
 
