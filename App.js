@@ -19,7 +19,7 @@ class SplashScreen extends Component {
     return (
       <View style={styles.container}>
         {this.state.splashVisible ? (
-          <View>
+          <View style={styles.splashContent}>
             <Image
               source={require("../stepup/assets/stepergize.png")}
               style={styles.logo}
@@ -32,12 +32,17 @@ class SplashScreen extends Component {
             </TouchableOpacity>
           </View>
         ) : (
-          <View style={styles.textContainer}>
-            <Text style={styles.topText}>Top Text</Text>
+          
+          <View style={styles.container}>
+            <Image
+              source={require("../stepup/assets/iconlogo.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.topText}>Looking Forward</Text>
             <View style={styles.horizontalTextContainer}>
-              <Text style={styles.leftText}>Left Text</Text>
+              <Text style={styles.leftText}>On Your Left!</Text>
               <Image source={require('../stepup/assets/shoes.jpeg')} style={styles.centerImage} />
-              <Text style={styles.rightText}>Right Text</Text>
+              <Text style={styles.rightText}>On Your Right!</Text>
             </View>
           </View>
         )}
@@ -53,6 +58,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
   },
+  splashContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    position: 'absolute', // Position it absolutely
+    top: 30, // Place it at the top
+    left: 25, // Place it at the left
+    width: 50, // Set the width to your desired size
+    height: 50, // Set the height to your desired size
+
+  },
   logo: {
     width: 200,
     height: 200,
@@ -63,8 +81,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
-    width: 75,
-    justifyContent: 'center',
   },
   buttonText: {
     color: 'white',
