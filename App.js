@@ -12,7 +12,7 @@ class SplashScreen extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ splashVisible: false });
-    }, 3000); // Change this value to control how long the splash screen is displayed (in milliseconds)
+    }, 10000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
 
   render() {
@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
+    width: 75,
+    justifyContent: 'center',
   },
   buttonText: {
     color: 'white',
