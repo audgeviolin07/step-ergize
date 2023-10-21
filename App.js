@@ -13,7 +13,7 @@ class SplashScreen extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ splashVisible: false });
-    }, 2000); // Change this value to control how long the splash screen is displayed (in milliseconds)
+    }, 3000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
 
   navigateToOtherScreen = () => {
@@ -42,9 +42,9 @@ class SplashScreen extends Component {
         // Your main app content goes here
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text>Get Started!</Text>
-          <TouchableOpacity style={styles.button} onPress={this.navigateToOtherScreen}>
+          {/* <TouchableOpacity style={styles.button} onPress={this.navigateToOtherScreen}>
             <Text style={styles.buttonText}>Go to Other Screen</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       );
     }
