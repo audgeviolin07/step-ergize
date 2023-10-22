@@ -1,5 +1,8 @@
+
+
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import * as Speech from 'expo-speech'; // Import expo-speech library
 
 class SplashScreen extends Component {
   constructor(props) {
@@ -8,6 +11,12 @@ class SplashScreen extends Component {
       splashVisible: true,
     };
   }
+
+  // Function to handle text-to-speech
+  handleSpeak = () => {
+    const textToSpeak = 'Hello, welcome to Stepergize';
+    Speech.speak(textToSpeak); // Use expo-speech to speak the text
+  };
 
   componentDidMount() {
     setTimeout(() => {
@@ -26,7 +35,8 @@ class SplashScreen extends Component {
             />
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.setState({ splashVisible: false })}
+              onPress={() => this.handleSpeak()}
+              //onPress={() => this.setState({ splashVisible: false })}
             >
               <Text style={styles.buttonText}>Start</Text>
             </TouchableOpacity>

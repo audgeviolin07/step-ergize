@@ -5,27 +5,20 @@ class SensorReader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sensorData: {
-        left: 'Waiting for data...',
-        right: 'Waiting for data...',
-        front: 'Waiting for data...',
-      },
+      sensorValue: 'Waiting for data...',
       danger: 50, // Set your danger threshold
-      warnings: [], // Store warnings in state
     };
   }
 
   componentDidMount() {
     SerialPort.startListener('/dev/tty0', { baudRate: 9600 }, (data) => {
-      [sensorIdentifier, value] = data.split(':');
-      parsedValue = parseFloat(value);
-      this.setState((prevState) => ({
-        sensorData: {
-          ...prevState.sensorData,
-          [sensorIdentifier]: parsedValue,
-        },
-      }));
-      this.displayWarnings(); // Call the function to display warnings when new data is received
+      const parsedValue = parseFloat(data);
+
+      if (!isNaN(parsedValue)) {
+        this.setState({ sensorValue: parsedValue }, () => {
+          this.displayWarnings();
+        });
+      }
     });
   }
 
@@ -33,29 +26,12 @@ class SensorReader extends Component {
     SerialPort.stopListener();
   }
 
-  getSensorData() {
-    sensorData = this.state.sensorData;
-    arrayOfDictionaries = [];
-    for (sensorIdentifier in sensorData) {
-        value = sensorData[sensorIdentifier];
-        arrayOfDistance.push({ [sensorIdentifier]: value });
-    }
-    return arrayOfDistance;
-  } 
-
   displayWarnings() {
-    const arrayOfObstacles = this.getSensorData();
-    const newWarnings = [];
-    arrayOfObstacles.forEach((dictionary) => {
-      for (const direction in dictionary) {
-        const distance = dictionary[direction];
-        if (distance < this.state.danger) {
-          newWarnings.push(`Obstacle is ${distance}cm ahead in the ${direction} direction.`);
-        }
-      }
-    });
+    if (sensorValue < danger) {
+      newWarnings.push(`Obstacle is ${sensorValue}cm ahead.`);
+    }
 
-    this.setState({ warnings: newWarnings }); // Update the warnings in the component's state
+    this.setState({ warnings: newWarnings });
   }
 
   render() {
