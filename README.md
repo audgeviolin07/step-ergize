@@ -7,4 +7,5 @@
 
 Empowering visually impaired individuals to navigate their surroundings with the electricity generated from their own footsteps.
 
-<img width="576" alt="Screenshot 2023-10-21 at 9 47 29 PM" src="https://github.com/audgeviolin07/stepup/assets/123830780/9c4769bb-5c15-46b2-aaec-1ab46be7b96a">
+
+<img width="411" alt="Screenshot 2023-10-22 at 3 07 17 AM" src="https://github.com/audgeviolin07/stepup/assets/123830780/95e8d535-3ca8-4d7b-8a03-9e7e44f8989a">
