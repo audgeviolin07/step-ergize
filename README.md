@@ -1,5 +1,6 @@
 # STEPERGIZE
 ## Your Footsteps, Your Power
+## GITHUB TUTORIAL
 
 <img width="280" alt="Screenshot 2023-10-21 at 1 06 07 PM" src="https://github.com/audgeviolin07/stepup/assets/69458308/81cc4751-c830-445c-8bb8-4c09135a666a">
 
