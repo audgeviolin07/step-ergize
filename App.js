@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
 import SensorReader from './SensorReader';
 
+
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
@@ -107,6 +108,7 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
+  warningContainer: {
   warningContainer: {
     width: 200,
     height: 200,
