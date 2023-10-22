@@ -17,21 +17,17 @@ We noticed that the more advanced tech for visually impaired individuals include
 Through each stride, piezoelectric crystals transfer mechanical stress energy to electricity, powering a complete circuit of ultrasonic sensors, Arduino board, and Bluetooth components. The ultrasonic sensors will track the distance of the closest obstacle in  our walking direction and update it continuously in the app through a Bluetooth connection. Suppose the obstacle distance to the user is under a certain threshold. In that case, the app will send out warnings with different levels to notify them.
 
 ## How we built it
-Our working process is divided into three steps:
-     - Setting up the circuit
-     - Building our React Native app
-     - Connecting the hardware and software
-We joined six pieces of piezoelectric crystals into three pairs with cartons and styrofoam in between. The piezoelectric crystals were connected in series with an Arduino Nano Board, a pair of ultrasonic distance sensors, and an HC05 Bluetooth module. The circuit functionality was first tested with LED light. After testing, we glued the crystals on the sole of the shoes, with the ultrasonic on the head of the shoes. Data collected will be transferred to serial ports through Bluetooth. We approached the app with a minimalistic UI and focused more on the audio aspects for our targeted audience. The app consists of a landing page welcoming users to the application. Once they start the journey, the app will move right into the detecting distance mode. Warnings are given out in both audio and text form.
+Our working process is divided into three steps: setting up the circuit, building our React Native app and connecting the hardware and software. We joined six pieces of piezoelectric crystals into three pairs with cartons and styrofoam in between. The piezoelectric crystals were connected in series with an Arduino Nano Board, a pair of ultrasonic distance sensors, and an HC05 Bluetooth module. The circuit functionality was first tested with LED light. After testing, we glued the crystals on the sole of the shoes, with the ultrasonic on the head of the shoes. Data collected will be transferred to serial ports through Bluetooth. We approached the app with a minimalistic UI and focused more on the audio aspects for our targeted audience. The app consists of a landing page welcoming users to the application. Once they start the journey, the app will move right into the detecting distance mode. Warnings are given out in both audio and text form.
 
 ## Challenges we ran into
 The biggest challenge we've faced were working with limited resources, including hardware components and time constraint. However, we've managed to finish on time.
 
 ## Accomplishments that we're proud of
 We have built a fully functional energy-harvesting circuits that can sustains itself!!!
--better the status quo of people with visual impairements
+Better the status quo of people with visual impairements
 
 ## What we learned
-Soldering, converting AC to DC power for IIoT by building a bridge rectifier for the first time !
+Soldering, converting AC to DC power for IoT by building a bridge rectifier for the first time !
 
 ## What's next for Step-ergize
 More distance sensors
