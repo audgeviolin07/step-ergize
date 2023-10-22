@@ -17,6 +17,7 @@ We noticed that the more advanced tech for visually impaired individuals include
 Through each stride, piezoelectric crystals transfer mechanical stress energy to electricity, powering a complete circuit of ultrasonic sensors, Arduino board, and Bluetooth components. The ultrasonic sensors will track the distance of the closest obstacle in  our walking direction and update it continuously in the app through a Bluetooth connection. Suppose the obstacle distance to the user is under a certain threshold. In that case, the app will send out warnings with different levels to notify them.
 
 ![demo](https://github.com/audgeviolin07/step-ergize/assets/129197465/dc271611-0119-42b8-9fc2-8a171f8e1c4a)
+<img width="411" src="[https://github.com/audgeviolin07/stepup/assets/123830780/95e8d535-3ca8-4d7b-8a03-9e7e44f8989a](https://github.com/audgeviolin07/step-ergize/assets/129197465/dc271611-0119-42b8-9fc2-8a171f8e1c4a)">
 
 
 ## How we built it
