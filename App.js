@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
-
+import { Canvas } from '@react-three/fiber';
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class SplashScreen extends Component {
 
   // Function to handle text-to-speech
   handleSpeak = () => {
-    const textToSpeak = 'Hello, welcome to Stepergize';
+    const textToSpeak = 'Hello, welcome to Stepergize.';
     Speech.speak(textToSpeak); // Use expo-speech to speak the text
   };
 
@@ -49,6 +49,13 @@ class SplashScreen extends Component {
               source={require("../stepup/assets/name.png")}
               style={styles.name}
             />
+            <View style={styles.shoeContainer}>
+              <Canvas>
+                <mesh>
+                  <sphereGeometry/>
+                </mesh>
+              </Canvas>
+            </View>
           </View>
         )}
       </View>
@@ -79,6 +86,11 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
+  shoeContainer: {
+    width: 200,
+    height: 200,
+    justifyContent: 'center',
+  },
   button: {
     backgroundColor: 'black',
     padding: 10,
@@ -101,20 +113,6 @@ const styles = StyleSheet.create({
     left: 20,
     flexDirection: 'row', // Arrange items horizontally
     alignItems: 'center',
-  },
-  leftText: {
-    flex: 1,
-    textAlign: 'left',
-    fontSize: 18,
-  },
-  centerImage: {
-    width: 200,
-    height: 200,
-  },
-  rightText: {
-    flex: 1,
-    textAlign: 'right',
-    fontSize: 18,
   },
 });
 
