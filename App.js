@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
@@ -42,11 +40,14 @@ class SplashScreen extends Component {
             </TouchableOpacity>
           </View>
         ) : (
-          
-          <View style={styles.container}>
-             <Image
+          <View style={styles.horizontalTextContainer}>
+            <Image
               source={require("../stepup/assets/iconlogo.png")}
               style={styles.icon}
+            />
+            <Image
+              source={require("../stepup/assets/name.png")}
+              style={styles.name}
             />
           </View>
         )}
@@ -66,12 +67,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    position: 'absolute', // Position it absolutely
-    top: 40, // Place it at the top
-    left: 25, // Place it at the left
     width: 50, // Set the width to your desired size
     height: 50, // Set the height to your desired size
-
+  },
+  name: {
+    width: 300,
+    height: 50,
   },
   logo: {
     width: 200,
@@ -96,7 +97,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   horizontalTextContainer: {
-    flexDirection: 'row',
+    top: 40,
+    left: 20,
+    flexDirection: 'row', // Arrange items horizontally
     alignItems: 'center',
   },
   leftText: {
