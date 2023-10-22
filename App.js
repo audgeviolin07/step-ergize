@@ -44,16 +44,10 @@ class SplashScreen extends Component {
         ) : (
           
           <View style={styles.container}>
-            <Image
+             <Image
               source={require("../stepup/assets/iconlogo.png")}
               style={styles.icon}
             />
-            <Text style={styles.topText}>Looking Forward</Text>
-            <View style={styles.horizontalTextContainer}>
-              <Text style={styles.leftText}>On Your Left!</Text>
-              <Image source={require('../stepup/assets/shoes.jpeg')} style={styles.centerImage} />
-              <Text style={styles.rightText}>On Your Right!</Text>
-            </View>
           </View>
         )}
       </View>
@@ -64,8 +58,6 @@ class SplashScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
   splashContent: {
@@ -75,7 +67,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: 'absolute', // Position it absolutely
-    top: 30, // Place it at the top
+    top: 40, // Place it at the top
     left: 25, // Place it at the left
     width: 50, // Set the width to your desired size
     height: 50, // Set the height to your desired size
