@@ -8,22 +8,50 @@ class SplashScreen extends Component {
     super(props);
     this.state = {
       splashVisible: true,
+      warningText: '',
     };
+    
+    this.speechTimeout = null;
   }
 
   // Function to handle text-to-speech
-  handleSpeak = () => {
-    const textToSpeak = 'Hello, welcome to Stepergize';
-    Speech.speak(textToSpeak); // Use expo-speech to speak the text
+  handleSpeak = (text) => {
+    //const textToSpeak = 'Hello, welcome to Stepergize';
+    Speech.speak(text); // Use expo-speech to speak the text
   };
 
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({ splashVisible: false });
+      // Start checking sensor data and warnings after the splash screen disappears
+      this.checkSensorData();
     }, 10000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
 
+  checkSensorData = () => {
+    const distance = SensorReader.getDistance();
+    if (distance < 100 && distance > 50) {
+      this.setState({ warningText: "Object is " + (distance / 100) + "m ahead of you" });
+      this.handleSpeak(this.state.warningText); // Pass the warningText as a parameter
+    } else if (distance < 50) {
+      this.setState({ warningText: "Please stop. Object is " + (distance / 100) + "m ahead of you" });
+      this.handleSpeak(this.state.warningText); // Pass the warningText as a parameter
+      // Set a timeout to stop the warning speech after 7 seconds
+      this.speechTimeout = setTimeout(() => {
+        this.setState({ warningText: "" }); // Clear the warning text
+      }, 7000); // Stop after 7 seconds (adjust as needed)
+    } else {
+      this.setState({ warningText: "" }); // No warning
+    }
+  
+    // Check the sensor data continuously, and delay the next check by 3 seconds
+    setTimeout(() => {
+      requestAnimationFrame(this.checkSensorData);
+    }, 3000);
+  };
+  
+  
   render() {
     return (
       <View style={styles.container}>
@@ -35,7 +63,7 @@ class SplashScreen extends Component {
             />
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.handleSpeak()}
+              onPress={() => this.handleSpeak("Hello, welcom to Stepergize! Your footsteps, your power!")}
               //onPress={() => this.setState({ splashVisible: false })}
             >
               <Text style={styles.buttonText}>Start</Text>
