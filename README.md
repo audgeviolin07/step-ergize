@@ -32,3 +32,6 @@ Soldering, converting AC to DC power for IoT by building a bridge rectifier for 
 ## What's next for Step-ergize
 More distance sensors
 Emergency location sharing feature (voice-command)
+
+## Build with
+React Native, Expo speech library, MicroPython, Arduino, Distance Sensor, Piezoelectric Crystals
