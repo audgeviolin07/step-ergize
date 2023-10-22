@@ -31,8 +31,8 @@ We have built a fully functional energy-harvesting circuits that can sustains it
 -better the status quo of people with visual impairements
 
 ## What we learned
-- Soldering, converting AC to DC power for IIoT by building a bridge rectifier for the first time !
+Soldering, converting AC to DC power for IIoT by building a bridge rectifier for the first time !
 
 ## What's next for Step-ergize
-- More distance sensors
-- Emergency location sharing feature (voice-command)
+More distance sensors
+Emergency location sharing feature (voice-command)
