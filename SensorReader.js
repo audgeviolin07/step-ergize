@@ -39,32 +39,32 @@ class SensorReader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sensorValue: this.getRandomFloat(20, 100), // Initialize with a random value
+      sensorValue: this.getRandomInt(20, 100), // Initialize with a random value
     };
   }
 
   componentDidMount() {
     // Simulate data updates at regular intervals (e.g., every 3 seconds)
     this.dataUpdateInterval = setInterval(() => {
-      this.setState({ sensorValue: this.getRandomFloat(20, 100) });
-    }, 3000); // Change the interval as needed
+      this.setState({ sensorValue: this.getRandomInt(20, 100) });
+    }, 1000); // Change the interval as needed
   }
 
   componentWillUnmount() {
     clearInterval(this.dataUpdateInterval); // Clear the interval when unmounting the component
   }
 
-  // Generate a random float value between min and max (inclusive)
-  getRandomFloat(min, max) {
-    return (Math.random() * (max - min) + min).toFixed(2);
+  // Generate a random integer value between min and max (inclusive)
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   getDistance() {
-    return this.state.sensorValue;
+    return this.getRandomInt(20, 100);
   }
 
   render() {
-    return null; // This component doesn't render anything
+    return null; 
   }
 }
 

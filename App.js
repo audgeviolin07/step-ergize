@@ -2,52 +2,45 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
 import SensorReader from './SensorReader';
-import { Canvas } from '@react-three/fiber';
+
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       splashVisible: true,
       warningText: '',
+      sensorReader: new SensorReader(), 
     };
     
     this.speechTimeout = null;
   }
 
-  // Function to handle text-to-speech
   handleSpeak = (text) => {
-    //const textToSpeak = 'Hello, welcome to Stepergize';
-    Speech.speak(text); // Use expo-speech to speak the text
+    Speech.speak(text); 
   };
 
 
   componentDidMount() {
+    Speech.speak("Welcome to Stepergize! Your footsteps, your power!");
     setTimeout(() => {
-      this.setState({ splashVisible: false });
-      // Start checking sensor data and warnings after the splash screen disappears
-      this.checkSensorData();
-    }, 10000); // Change this value to control how long the splash screen is displayed (in milliseconds)
+      this.setState({ splashVisible: false  });
+      // Start checking sensor data and warningrs after the splash screen disappears
+    }, 7000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
   checkSensorData = () => {
-    const distance = SensorReader.getDistance();
-    if (distance < 100 && distance > 50) {
-      this.setState({ warningText: "Object is " + (distance / 100) + "m ahead of you" });
-      this.handleSpeak(this.state.warningText); // Pass the warningText as a parameter
-    } else if (distance < 50) {
-      this.setState({ warningText: "Please stop. Object is " + (distance / 100) + "m ahead of you" });
-      this.handleSpeak(this.state.warningText); // Pass the warningText as a parameter
-      // Set a timeout to stop the warning speech after 7 seconds
-      this.speechTimeout = setTimeout(() => {
-        this.setState({ warningText: "" }); // Clear the warning text
-      }, 7000); // Stop after 7 seconds (adjust as needed)
-    } else {
-      this.setState({ warningText: "" }); // No warning
-    }
+    const updateWarning = () => {
+      const distance = this.state.sensorReader.getDistance();
+      if (distance < 100 && distance > 50) {
+        this.setState({ warningText: "Object is " + (distance / 100) + "m ahead of you" });
+      } else if (distance < 50) {
+        this.setState({ warningText: "Please stop. Object is " + (distance / 100) + "m ahead of you" });
+      } else {
+        this.setState({ warningText: "" }); // No warning
+      }
+    };
   
-    // Check the sensor data continuously, and delay the next check by 3 seconds
-    setTimeout(() => {
-      requestAnimationFrame(this.checkSensorData);
-    }, 3000);
+    // Set up an interval to periodically check and update the warning
+    this.warningInterval = setInterval(updateWarning, 3000); // Adjust the interval as needed
   };
   
   
@@ -63,8 +56,8 @@ class SplashScreen extends Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                this.handleSpeak("Hello, welcome to Stepergize! Your footsteps, your power!");
-                this.setState({ splashVisible: false }); // This line hides the splash screen after pressing the button
+                this.setState({ splashVisible: false }); 
+                this.checkSensorData();
               }}
             >
               <Text style={styles.buttonText}>Start</Text>
@@ -80,8 +73,10 @@ class SplashScreen extends Component {
               source={require("../stepup/assets/name.png")}
               style={styles.name}
             />
-            <Text style={styles.warningText}>{this.state.warningText}</Text> {/* Display the warning text */}
-            {this.state.warningText && this.handleSpeak(this.state.warningText)} {/* Trigger voice-over if warning text is not empty */}
+            <Text style={styles.warning}>{this.state.warningText}</Text> 
+            {this.state.warningText && (
+            <Text style={styles.warning}>{this.state.warningText}</Text>)}
+            {this.state.warningText && this.handleSpeak(this.state.warningText)}
           </View>
         )}
       </View>
@@ -112,10 +107,10 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
-  shoeContainer: {
+  warningContainer: {
     width: 200,
     height: 200,
-    justifyContent: 'center',
+    flexDirection: 'row',
   },
   button: {
     backgroundColor: 'black',
@@ -127,6 +122,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  warning: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   textContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -135,9 +134,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   horizontalTextContainer: {
-    top: 40,
+    top: 0,
     left: 20,
-    flexDirection: 'row', // Arrange items horizontally
+    flexDirection: 'row', 
     alignItems: 'center',
   },
 });

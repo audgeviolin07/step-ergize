@@ -11,19 +11,16 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.19",
-    "@react-three/fiber": "^8.15.1",
     "expo": "~49.0.15",
     "expo-av": "~13.4.1",
     "expo-file-system": "~15.4.4",
     "expo-gl": "~13.0.1",
     "expo-speech": "~11.3.0",
     "expo-status-bar": "~1.6.0",
-    "expo-three": "^7.0.0",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-sound": "^0.11.2",
-    "react-native-tts": "^4.1.0",
-    "three": "^0.157.0"
+    "react-native-tts": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
