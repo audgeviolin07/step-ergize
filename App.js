@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
+import SensorReader from './SensorReader';
 
 class SplashScreen extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class SplashScreen extends Component {
     const textToSpeak = 'Hello, welcome to Stepergize';
     Speech.speak(textToSpeak); // Use expo-speech to speak the text
   };
+
 
   componentDidMount() {
     setTimeout(() => {
@@ -48,6 +50,7 @@ class SplashScreen extends Component {
               source={require("../stepup/assets/iconlogo.png")}
               style={styles.icon}
             />
+
           </View>
         )}
       </View>
