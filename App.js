@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
 import SensorReader from './SensorReader';
-
+import { Canvas } from '@react-three/fiber';
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,6 @@ class SplashScreen extends Component {
       this.checkSensorData();
     }, 10000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
-
   checkSensorData = () => {
     const distance = SensorReader.getDistance();
     if (distance < 100 && distance > 50) {
@@ -113,6 +112,11 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
+  shoeContainer: {
+    width: 200,
+    height: 200,
+    justifyContent: 'center',
+  },
   button: {
     backgroundColor: 'black',
     padding: 10,
@@ -135,20 +139,6 @@ const styles = StyleSheet.create({
     left: 20,
     flexDirection: 'row', // Arrange items horizontally
     alignItems: 'center',
-  },
-  leftText: {
-    flex: 1,
-    textAlign: 'left',
-    fontSize: 18,
-  },
-  centerImage: {
-    width: 200,
-    height: 200,
-  },
-  rightText: {
-    flex: 1,
-    textAlign: 'right',
-    fontSize: 18,
   },
 });
 
