@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech'; // Import expo-speech library
 import SensorReader from './SensorReader';
-import { Canvas } from '@react-three/fiber';
+
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
@@ -23,9 +23,9 @@ class SplashScreen extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ splashVisible: false });
+      this.setState({ splashVisible: false  });
       // Start checking sensor data and warnings after the splash screen disappears
-      this.checkSensorData();
+      // this.checkSensorData();
     }, 10000); // Change this value to control how long the splash screen is displayed (in milliseconds)
   }
   checkSensorData = () => {
@@ -78,12 +78,11 @@ class SplashScreen extends Component {
               source={require("../stepup/assets/name.png")}
               style={styles.name}
             />
-            <View style={styles.shoeContainer}>
-              <Canvas>
-                <mesh>
-                  <sphereGeometry/>
-                </mesh>
-              </Canvas>
+            <View style={styles.warningContainer}>
+            <Image
+              source={require("../stepup/assets/iconlogo.png")}
+              style={styles.warningicon}
+            />
             </View>
           </View>
         )}
@@ -115,10 +114,10 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
-  shoeContainer: {
+  warningContainer: {
     width: 200,
     height: 200,
-    justifyContent: 'center',
+    flexDirection: 'row',
   },
   button: {
     backgroundColor: 'black',
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   horizontalTextContainer: {
-    top: 40,
+    top: 0,
     left: 20,
     flexDirection: 'row', // Arrange items horizontally
     alignItems: 'center',
