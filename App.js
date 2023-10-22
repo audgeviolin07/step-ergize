@@ -86,6 +86,7 @@ class SplashScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -96,11 +97,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 50, // Set the width to your desired size
+    width: 40, // Set the width to your desired size
     height: 50, // Set the height to your desired size
   },
   name: {
-    width: 300,
+    width: 250,
     height: 50,
   },
   logo: {
@@ -108,7 +109,6 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
-  warningContainer: {
   warningContainer: {
     width: 200,
     height: 200,
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   horizontalTextContainer: {
-    top: 0,
-    left: 20,
+    top: 35,
+    left: 10,
     flexDirection: 'row', 
     alignItems: 'center',
   },
