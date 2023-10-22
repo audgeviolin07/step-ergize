@@ -63,8 +63,10 @@ class SplashScreen extends Component {
             />
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.handleSpeak("Hello, welcom to Stepergize! Your footsteps, your power!")}
-              //onPress={() => this.setState({ splashVisible: false })}
+              onPress={() => {
+                this.handleSpeak("Hello, welcome to Stepergize! Your footsteps, your power!");
+                this.setState({ splashVisible: false }); // This line hides the splash screen after pressing the button
+              }}
             >
               <Text style={styles.buttonText}>Start</Text>
             </TouchableOpacity>
@@ -79,6 +81,8 @@ class SplashScreen extends Component {
               source={require("../stepup/assets/name.png")}
               style={styles.name}
             />
+            <Text style={styles.warningText}>{this.state.warningText}</Text> {/* Display the warning text */}
+            {this.state.warningText && this.handleSpeak(this.state.warningText)} {/* Trigger voice-over if warning text is not empty */}
           </View>
         )}
       </View>
